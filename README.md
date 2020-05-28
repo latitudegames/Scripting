@@ -13,6 +13,3 @@ The `state` variable can be used to store information that's persistent across f
 
 ### Console
 `console.log("Some message")` will log messages that you can see in the scripting console
-  
-### Utils
-`const questCompleted = await utils.checkQuestCompleted({history, quest, text})` can be used to check whether a quest was completed.
