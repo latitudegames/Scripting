@@ -2,6 +2,9 @@
 
 Custom scripts on AI Dungeon scenarios allow you to modify the memory, input, and output as well as keep track of custom state objects that might be relevant for your adventure. You can write custom scripts in Javascript by going to the "Scripts" section while on web on the edit scenario page. For security reasons some Javascript functionality is locked down however. Submit a request if there is functionality you would like opened up and we can look into it.
 
+### History
+You have access to (but can't modify) the `history` object which is a list of the previous actions of the player and of the AI.
+
 ### Input Modifier
 Called each time the player gives an input and has the opportunity to modify that input. 
 
