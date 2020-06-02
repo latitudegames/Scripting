@@ -5,6 +5,11 @@ Custom scripts on AI Dungeon scenarios allow you to modify the memory, input, an
 ## Examples 
 You can check out some examples for how to use scripting [here](examples)
 
+## Don't Know How to Code?
+Then now's a great time to learn! A good resource to learn javascript from scratch is this free course.
+
+https://www.codecademy.com/courses/introduction-to-javascript
+
 ### History
 You have access to (but can't modify) the `history` object which is a list of the previous actions of the player and of the AI.
 
