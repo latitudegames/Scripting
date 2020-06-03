@@ -13,6 +13,9 @@ https://www.codecademy.com/courses/introduction-to-javascript
 ### History
 You have access to (but can't modify) the `history` object which is a list of the previous actions of the player and of the AI.
 
+### Quests
+You can modify the quests property to change the quests of the adventure mid game. 
+
 ### Input Modifier
 Called each time the player gives an input and has the opportunity to modify that input. 
 
@@ -26,7 +29,6 @@ You can modify worldEntries with the below functions
 * addWorldEntry(keys, entry)
 * removeWorldEntry(index)
 * updateWorldEntry(index, keys, entry)
-
 
 ### State
 The `state` variable can be used to store information that's persistent across function calls. 
