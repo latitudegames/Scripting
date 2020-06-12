@@ -28,15 +28,13 @@ const modifier = (text) => {
     ]
   }
   else{
-    modifiedText = "\n>You try to " + text.substring(7) + '\n'
+    modifiedText = "\n> You try to " + text.substring(7)
   }
   
   state.turn = state.turn + 1
   
-  state.message = "You have survived " + state.turn + ' turns.'
-  
   if(state.turn > 2){
-  state.memory = {frontMemory:  "You're probably going to die."}
+  state.memory = {context:  "You're probably going to die."}
   }
   if(state.turn > 6){
     state.memory = {context: "You're about to die."}
@@ -45,12 +43,12 @@ const modifier = (text) => {
     state.memory = {context: "You have no hope. There are minutes left till you die."}
   }
 
-  const nTurn = Math.floor((Math.random() * 2)) + 2
+  const nTurn = Math.floor((Math.random() * 2)) + 3
 
   if(state.turn % nTurn === 0){
     const eventInd = Math.floor((Math.random() * state.events.length));
       if(eventInd < state.events.length){
-        modifiedText = modifiedText + state.events[eventInd]
+        modifiedText = modifiedText + '\n' + state.events[eventInd]
         state.events.splice(eventInd)
       }
   }
