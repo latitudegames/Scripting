@@ -7,7 +7,8 @@
 const modifier = (text) => {
     state.configuration = {
         enableSelectionOnCompletedQuest: false, // Whether quest selection should be restricted until a specific quest is completed
-        enableSelectionOnQuest: 0, // The line number of the quest in the list of quests (e.g. quest on second line = 2). Only used when the above is true.
+        enableSelectionOnQuest: 0, // The line number of the quest in the list of quests (e.g. quest on second line = 2) on the Edit Scenario page. Only used when the above is true.
+        initialQuests: 0, // The amount of quests inputted into the Edit Scenario page
         quests: [ // The quests that will become available to the player either after the above quest is completed or at the start of the scenario.
             {
                 name: "quit your job", // The quest's name, shown in the selection message
@@ -46,7 +47,7 @@ const modifier = (text) => {
     } else if (text.toLowerCase().includes("\n> you give up on your quest.")) {
         state.nextOutput = "You give up on your quest to " + state.assignedQuest.name.toLowerCase() + "."
         state.assignedQuest = ""
-        quests.splice(3)
+        quests.splice(state.configuration.initialQuests)
     }
 
     return {
@@ -72,12 +73,12 @@ const modifier = (text) => {
         }
         state.message = "Available Quests: " + questNames.join(", ") + ". To take up a quest, type 'take up quest <quest number in list>'."
     } else if (state.assignedQuest != "") {
-        if (!quests[3].completed) {
-            state.message = "Current Objective: " + quests[3].quest + ". To quit, type 'give up on my quest'."
+        if (!quests[state.configuration.initialQuests].completed) {
+            state.message = "Current Objective: " + quests[state.configuration.initialQuests].quest + ". To quit, type 'give up on my quest'."
         } else {
             nextObjective = state.assignedQuest.objectives.shift()
             if (nextObjective == undefined) {
-                quests.splice(3)
+                quests.splice(state.configuration.initialQuests)
                 state.availableQuests = state.availableQuests.filter(e => e.name !== state.assignedQuest.name)
                 for (nextQuest of state.assignedQuest.nextQuests) {
                     state.availableQuests.push(nextQuest)
@@ -89,11 +90,11 @@ const modifier = (text) => {
                 }
                 state.message = "Available Quests: " + questNames.join(", ") + ". To take up a quest, type 'take up quest <quest number in list>'."
             } else {
-                quests.splice(3)
+                quests.splice(state.configuration.initialQuests)
                 quests.push({
                     quest: nextObjective
                 })
-                state.message = "Objective completed! New objective: " + quests[3].quest + ". To quit, type 'give up on my quest'."
+                state.message = "Objective completed! New objective: " + quests[state.configuration.initialQuests].quest + ". To quit, type 'give up on my quest'."
             }
         }
     }
