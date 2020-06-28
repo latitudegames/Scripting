@@ -13,6 +13,10 @@ https://www.codecademy.com/courses/introduction-to-javascript
 ### History
 You have access to (but can't modify) the `history` object which is a list of the previous actions of the player and of the AI.
 
+### Memory
+You have access to (but can't modify) the `memory` object which is the current user defined memory.
+You can modify the memory the game uses by settings the `state.memory.context` value. This will replace the user defined memory.
+
 ### Quests
 You can modify the quests property to change the quests of the adventure mid game. 
 
@@ -32,7 +36,7 @@ You can modify worldEntries with the below functions
 
 ### State
 The `state` variable can be used to store information that's persistent across function calls. 
-* The `state.memory.context` value will be added to the games memory if exists
+* The `state.memory.context` value will replace the user defined memory if it exists
 * The `state.message` value will be displayed as a extra message in the game (if it exists) 
 * You can set any variable on state to store and modify adventures throughout an adventure.
 
