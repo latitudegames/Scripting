@@ -16,6 +16,7 @@ You have access to (but can't modify) the `history` object which is a list of th
 ### Memory
 You have access to (but can't modify) the `memory` object which is the current user defined memory.
 You can modify the memory the game uses by settings the `state.memory.context` value. This will replace the user defined memory.
+You can also set `state.memory.frontMemory` which will include whatever is there in front of even the last action when it's fed into the model, but still not display it to the user.
 
 ### Quests
 You can modify the quests property to change the quests of the adventure mid game. 
