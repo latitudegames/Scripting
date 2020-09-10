@@ -23,9 +23,6 @@ You can set `state.memory.authorsNote` to provide a piece of text that will alwa
 
 As an example, if you set `state.memory.authorsNote` to `the following paragraphs are scary.`, the AI will see `[Author's note: the following paragraphs are scary.]` three lines back, causing it to be more likely to generate scary text. Another example could be `a dragon will show up soon` or `the player will soon receive a quest`.
 
-### Quests
-You can modify the quests property to change the quests of the adventure mid game. 
-
 ### Input Modifier
 Called each time the player gives an input and has the opportunity to modify that input. 
 
