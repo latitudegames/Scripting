@@ -28,7 +28,7 @@ modifier(text)
 
 Set a note by typing `note: ` when in Do mode. It will be tagged to whatever the most recent line of text is, appearing below it to the AI, but not visible to the user.
 
-## Content Modifier
+## Context Modifier
 
 ```js
 // info.memoryLength is the length of the memory section of text. text.slice(0, info.memoryLength) will be the memory.
