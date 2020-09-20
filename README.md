@@ -29,6 +29,9 @@ You can modify the quests property to change the quests of the adventure mid gam
 ### Input Modifier
 Called each time the player gives an input and has the opportunity to modify that input. 
 
+### Context Modifier
+Called each time the AI model is about to receive input and has the opportunity to modify that input (by up to a 75% [edit distance](https://en.wikipedia.org/wiki/Levenshtein_distance) change).
+
 ### Output Modifier
 Called each time the model generates an output and has the opportunity to modify that output. 
 
@@ -48,3 +51,9 @@ The `state` variable can be used to store information that's persistent across f
 
 ### Console
 `console.log("Some message")` will log messages that you can see in the scripting console
+
+### Info
+
+`info` contains some useful values, depending on which modifier you're in.
+All modifiers have access to `info.actionCount`, the number of actions in the adventure so far.
+When in a Context Modifier, `info.memoryLength` and `info.maxChars` are also set, indicating the length of the memory portion of text (if any), and the total allowed length of the context after which it will be truncated.
