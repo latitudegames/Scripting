@@ -26,6 +26,9 @@ As an example, if you set `state.memory.authorsNote` to `the following paragraph
 ### Quests
 You can modify the quests property to change the quests of the adventure mid game. 
 
+### Shared Library
+Appended to the other three scripts so you can use the same code between all three.
+
 ### Input Modifier
 Called each time the player gives an input and has the opportunity to modify that input. 
 
