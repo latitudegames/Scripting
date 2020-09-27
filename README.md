@@ -3,7 +3,7 @@
 Custom scripts on AI Dungeon scenarios allow you to modify the memory, input, and output as well as keep track of custom state objects that might be relevant for your adventure. You can write custom scripts in Javascript by going to the "Scripts" section while on web on the edit scenario page. For security reasons some Javascript functionality is locked down however. Submit a request if there is functionality you would like opened up and we can look into it.
 
 ## Examples 
-You can check out some examples for how to use scripting [here](examples)
+You can check out some examples for how to use scripting [here](examples). We also have [user contributed scripts here](contributed).
 
 ## Don't Know How to Code?
 Then now's a great time to learn! A good resource to learn javascript from scratch is this free course.
