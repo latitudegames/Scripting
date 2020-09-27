@@ -11,7 +11,7 @@ Then now's a great time to learn! A good resource to learn javascript from scrat
 https://www.codecademy.com/courses/introduction-to-javascript
 
 ## History
-You have access to (but can't modify) the `history` object which is a list of the previous actions of the player and of the AI including the action type.
+You have access to (but can't modify) the `history` object which is a list of the previous actions of the player and of the AI, including the action type.
 
 ## Memory
 You have access to (but can't modify) the `memory` object which is the current user defined memory.
@@ -24,8 +24,9 @@ You can set `state.memory.authorsNote` to provide a piece of text that will alwa
 As an example, if you set `state.memory.authorsNote` to `the following paragraphs are scary.`, the AI will see `[Author's note: the following paragraphs are scary.]` three lines back, causing it to be more likely to generate scary text. Another example could be `a dragon will show up soon` or `the player will soon receive a quest`.
 
 ## Modifiers
+
 ### Shared Library
-Appended to the start of the other three scripts so you can use the same code between all three.
+Prepended to the start of the other three scripts before execution so that you can share code between all three.
 
 ### Input Modifier
 Called each time the player gives an input and has the opportunity to modify that input. 
@@ -54,8 +55,10 @@ The `state` variable can be used to store information that's persistent across f
 `console.log("Some message")` will log messages that you can see in the scripting console
 
 ## Info
+
 `info` contains some useful values, depending on which modifier you're in.
 All modifiers have access to `info.actionCount`, the number of actions in the adventure so far.
+
 When in a Context Modifier, `info.memoryLength` and `info.maxChars` are also set, indicating the length of the memory portion of text (if any), and the total allowed length of the context after which it will be truncated.
 
 ## Last Model Input (LMI)
