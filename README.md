@@ -10,21 +10,23 @@ Then now's a great time to learn! A good resource to learn javascript from scrat
 
 https://www.codecademy.com/courses/introduction-to-javascript
 
-### History
-You have access to (but can't modify) the `history` object which is a list of the previous actions of the player and of the AI.
+## History
+You have access to (but can't modify) the `history` object which is a list of the previous actions of the player and of the AI, including the action type.
 
-### Memory
+## Memory
 You have access to (but can't modify) the `memory` object which is the current user defined memory.
 You can modify the memory the game uses by settings the `state.memory.context` value. This will replace the user defined memory.
 You can also set `state.memory.frontMemory`, which will include whatever is there in front of even the last action when it's fed into the model, but still not display it to the user.
 
-### Author's Note
+## Author's Note
 You can set `state.memory.authorsNote` to provide a piece of text that will always be injected three lines back in the game history. This will not be shown to the user, but the AI will see it.
 
 As an example, if you set `state.memory.authorsNote` to `the following paragraphs are scary.`, the AI will see `[Author's note: the following paragraphs are scary.]` three lines back, causing it to be more likely to generate scary text. Another example could be `a dragon will show up soon` or `the player will soon receive a quest`.
 
-### Quests
-You can modify the quests property to change the quests of the adventure mid game. 
+## Modifiers
+
+### Shared Library
+Prepended to the start of the other three scripts before execution so that you can share code between all three.
 
 ### Input Modifier
 Called each time the player gives an input and has the opportunity to modify that input. When inside of an Input Modifier,
@@ -36,7 +38,7 @@ Called each time the AI model is about to receive input and has the opportunity 
 ### Output Modifier
 Called each time the model generates an output and has the opportunity to modify that output. 
 
-### World Entries
+## World Entries
 You can read from the `worldEntries` parameter (same as world info that you can set on the scenario)
 
 You can modify worldEntries with the below functions
@@ -44,17 +46,21 @@ You can modify worldEntries with the below functions
 * removeWorldEntry(index)
 * updateWorldEntry(index, keys, entry)
 
-### State
-The `state` variable can be used to store information that's persistent across function calls. 
+## State
+The `state` variable can be used to store information that's persistent across function calls/modifiers. 
 * The `state.memory.context` value will replace the user defined memory if it exists
 * The `state.message` value will be displayed as a extra message in the game (if it exists) 
 * You can set any variable on state to store and modify adventures throughout an adventure.
 
-### Console
+## Console
 `console.log("Some message")` will log messages that you can see in the scripting console
 
-### Info
+## Info
 
 `info` contains some useful values, depending on which modifier you're in.
 All modifiers have access to `info.actionCount`, the number of actions in the adventure so far.
+
 When in a Context Modifier, `info.memoryLength` and `info.maxChars` are also set, indicating the length of the memory portion of text (if any), and the total allowed length of the context after which it will be truncated.
+
+## Last Model Input (LMI)
+Clicking on the brain icon in the scripting interface will open LMI, in which you can see the last context the AI was provided, the console, and the state.
