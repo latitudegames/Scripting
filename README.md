@@ -27,7 +27,8 @@ As an example, if you set `state.memory.authorsNote` to `the following paragraph
 You can modify the quests property to change the quests of the adventure mid game. 
 
 ### Input Modifier
-Called each time the player gives an input and has the opportunity to modify that input. 
+Called each time the player gives an input and has the opportunity to modify that input. When inside of an Input Modifier,
+you can return `stop: true` in order to stop processing——see [examples/commandParser.js].
 
 ### Context Modifier
 Called each time the AI model is about to receive input and has the opportunity to modify that input (by up to a 75% [edit distance](https://en.wikipedia.org/wiki/Levenshtein_distance) change).
