@@ -13,4 +13,5 @@ Also, note that we do not currently accept NSFW scripts.
 
 The following are links to more AID scripts located externally.
 
+* [MousAI Script Pack I](https://github.com/MousAIDungeon/script-pack-1) - A collection of user-friendly scripts that allow you to use cool new features without modifying the code. Just copy/paste the script and use World Info or slash ("/") commands to customize.
 * More soon! Please send PRs.
