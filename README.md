@@ -34,6 +34,7 @@ you can return `stop: true` in order to stop processing——see [examples/comma
 
 ### Context Modifier
 Called each time the AI model is about to receive input and has the opportunity to modify that input (by up to a 75% [edit distance](https://en.wikipedia.org/wiki/Levenshtein_distance) change).
+When inside of a Context Modifier, you can return `stop: true` in order to stop processing.
 
 ### Output Modifier
 Called each time the model generates an output and has the opportunity to modify that output. 
