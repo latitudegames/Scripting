@@ -6,7 +6,7 @@
 
 // This modifier re-implements Author's Note as an example.
 const modifier = (text) => {
-  const memory = info.memoryLength ? text.slice(0, info.memoryLength) : ''
+  const contextMemory = info.memoryLength ? text.slice(0, info.memoryLength) : ''
   const context = info.memoryLength ? text.slice(info.memoryLength + 1) : text
   const lines = context.split("\n")
   if (lines.length > 2) {
@@ -15,7 +15,7 @@ const modifier = (text) => {
   }
   // Make sure the new context isn't too long, or it will get truncated by the server.
   const combinedLines = lines.join("\n").slice(-(info.maxChars - info.memoryLength))
-  const finalText = [memory, combinedLines].join("")
+  const finalText = [contextMemory, combinedLines].join("")
   return { text: finalText }
 }
 

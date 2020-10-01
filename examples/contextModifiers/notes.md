@@ -38,7 +38,7 @@ Set a note by typing `note: ` when in Do mode. It will be tagged to whatever the
 const modifier = (text) => {
   state.notes = state.notes || []
 
-  const memory = text.slice(0, info.memoryLength || 0)
+  const contextMemory = text.slice(0, info.memoryLength || 0)
   let context = info.memoryLength ? text.slice(info.memoryLength + 1) : text
 
   // Assumes that the notes are sorted from oldest to newest.
@@ -61,7 +61,7 @@ const modifier = (text) => {
 
   // Make sure the new context isn't too long, or it will get truncated by the server.
   context = context.slice(-(info.maxChars - info.memoryLength))
-  const finalText = [memory, context].join("\n")
+  const finalText = [contextMemory, context].join("\n")
   return { text: finalText }
 }
 
