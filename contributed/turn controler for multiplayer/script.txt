@@ -1,0 +1,63 @@
+const modifier = (text) => {
+  
+  modifiedText = text
+  
+ if(!state.playernames){
+   
+   console.log("setup")
+   
+   state.playernames = []
+   state.lastplayer = ""
+   state.nextplayerindex = 0
+   
+   
+ }
+ 
+
+ 
+ // check if a new player name appears
+ 
+ textspl = modifiedText.split(" ")
+ 
+ name = textspl[1]
+
+ 
+ if(state.playernames.includes(name) == false){
+   
+   state.playernames.push(name)
+  
+   
+ }
+ 
+ //check if there are at least two players, if true start turn routine
+ 
+ if(state.playernames.length > 1){
+   
+   state.nextplayerindex = state.playernames.indexOf(state.lastplayer) + 1
+   
+   if(!state.playernames[state.nextplayerindex]){state.nextplayerindex = 0}
+   
+   if(modifiedText.includes("> " + state.playernames[state.nextplayerindex]  ) == false  )  {
+     
+   
+     
+     
+     modifiedText = ""
+     state.message = "It´s " + state.playernames[state.nextplayerindex] +  "'s turn"
+   }
+   
+ }
+ 
+ 
+ 
+ 
+ state.lastplayer = name
+ 
+ 
+  
+  // You must return an object with the text property defined.
+  return { text: modifiedText }
+}
+
+// Don't modify this part
+modifier(text)
