@@ -1,0 +1,193 @@
+
+
+const modifier = (text) => {
+  
+  
+  var found = []
+
+function isIn(what, where) {
+  if (where.indexOf(what) > -1) {
+    return true
+  }
+  return false
+}
+
+function arrayIsEmpty(array) {
+  //If it's not an array, return TRUE.
+  if (!Array.isArray(array)) {
+    return true
+  }
+  //If it is an array, check its length property
+  if (array.length == 0) {
+    //Return TRUE if the array is empty
+    return true
+  }
+  //Otherwise, return FALSE.
+  return false
+}
+
+//console.log(text)
+
+//var modifiedText = text
+state.modtext = modifiedText
+//console.log(modifiedText)
+
+if (typeof(state.bag) == "undefined") {
+  state.bag = []
+}
+
+function putBag(what) {
+  
+  
+  
+  state.bag.push(what)
+}
+
+function checkBag(what) {
+  
+ 
+ // console.log("check")
+// console.log(state.bag)
+  for (thing of state.bag) {
+    if (what == thing) {
+      
+      //state.message = "check true"
+      return true
+    }
+  }
+   modifiedText = text + " or at least you try but you don´t have it. You may have lost it or just forgotten to take it with you."
+   
+  return false
+}
+
+
+function remBag(what) {
+  
+  console.log("rem")
+  
+  if (checkBag(what) == true) {
+    
+  
+  state.bag.splice(state.bag.indexOf(what), 1)
+  
+  }
+}
+
+
+
+function thingfilter() {
+  function isUpperCase(str) {
+    return str === str.toUpperCase()
+  }
+  
+  
+  
+  
+  
+  wordsplit = modifiedText.split(" ")
+
+  for (word of wordsplit) {
+    if (isUpperCase(word)) {
+      found.push(word)
+     
+    }
+   
+    
+  }
+  
+  if (arrayIsEmpty(found) == false) {
+      return found
+    }
+}
+  
+  if (thingfilter() != false) {
+    
+    
+    if (modifiedText.indexOf("PUT") > -1 || modifiedText.indexOf("gET") > -1){
+      
+    
+     
+     putBag(found[found.indexOf("PUT") + 1])
+     
+    }
+    if ( modifiedText.indexOf("GET") > -1 || modifiedText.indexOf("gET") > -1 ) {
+      
+     
+      remBag(found[found.indexOf("GET") + 1])
+      
+        
+      
+      
+     
+      
+     
+    }
+  }
+  
+  var inBagNow = "Inventory: "
+
+if (state.bag.length > 0) {
+  
+  
+  
+  for(thing of state.bag) {
+    
+    inBagNow =  inBagNow + thing + " | "
+    
+  }
+  
+}
+
+if (inBagNow != "Inventory: ") {
+  
+  state.message = inBagNow
+  
+}
+
+ wordsplit = modifiedText.split(" ")
+
+ newstring = ""
+ 
+  function isUpperCase(str) {
+    return str === str.toUpperCase()
+  }
+
+  for (word of wordsplit) {
+    if (word == "PUT" || word == "pUT") {
+      
+      newstring = newstring + "put"
+     
+    }
+    
+    else if  (word == "GET" || word == "gET") {
+      
+      newstring = newstring + "get"
+     
+    }
+    
+    else if (isUpperCase(word)) {
+      
+      newstring = newstring  + word.toLowerCase() + " "
+      
+    }
+    
+    else {
+      
+      newstring = newstring + " " + word + " "
+    }
+   
+    
+  }
+  
+  newstring = newstring[0].toUpperCase() + newstring.substring(1)
+  
+modifiedText = newstring
+
+return {
+  text: modifiedText
+}
+
+}
+
+// Don't modify this part
+modifier(text)

@@ -1,0 +1,2 @@
+Write PUT THING in a sentence to put THING into your inventory.Write GET and THING in a sentence to GET THING out of your inventory. If you are trying to GET an item not in your inventory you will be informed about it.
+Example: "You PUT the BOOK into the bag"
