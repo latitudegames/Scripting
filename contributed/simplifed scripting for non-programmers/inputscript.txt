@@ -1,0 +1,174 @@
+///////////////////////////////////////////////////////////////////////////////
+// COPY ALL OF THIS FROM HERE UNTIL THE LINE ______END_____ into the tabs "INPUT Modifier" Then read the instructions below
+// BE SURE TO INCLUDE THE / which is at the start of some lines like this one.
+//////////////////////////////////////////////////////////////////////////////
+
+//Welcome to "EasyScript". EasyScript is a "simplification library" around the javascript scripting language used in AI Dungeon.
+//It is intended to enable "non programmers" to do some things with their scenarios not possible using the AI Dungeon UI.
+
+//EasyScript uses a simple "IF THIS THEN THAT" syntax.
+
+//Each EasyScript instruction consists of five parts divided by |.
+
+//The parts are called: IF-Part|TEXT-Part|INSTRUCTION-Number|MODE-PART|CONTINUE-PART
+
+//Each instruction needs to end with a ";"
+
+//The IF-Part
+//Put a comma seperated list of words into this part. AI Dungeon will look if all those words appear in the input and then add whatever is in the text part to the part of AI Dungeon set by the mode part
+
+//The TEXT-Part
+//The TEXT-Part is the text used for the chosen mode
+
+//The INSTRUCTION-Number, this is a number identifing the instruction for use in the CONTINUE-part. Just number the instructions starting with 0.
+
+//The CONTINUE-Part
+//This part tells AI Dungeon which instruction it should do next when the words in the IF-Part appear. This part consists of a instruction number.
+//Writing just a number into the CONTINUE-Part will tell AI Dungeon to wait for the instruction with that number to "trigger" next.
+
+//MODE-Part
+//This part chooses the MODE of your instruction by writing its name in capital letters: 
+
+//INPUT: The TEXT Part will be added to what ever you have input into the game   
+//MEMORY: The TEXT Part will get inserted into "/remember" 
+//OUTPUT: The TEXT Part will be added to the response of the AI
+
+//Examples:
+
+//Imagine you got these instructions:
+
+// beast,castle|The beast´s castle is very dark|0|MEMORY|1
+// rose,touch|The beast suddenly appears behind you and roars at you loudly.|1|OUTPUT|2 
+// scream|You flee out of the room|2|OUTPUT|3
+// run,castle,behind|As you run away and leave the castle behind it crumbles to dust|3|MEMORY|N
+
+////////////////////////////////////////////////////////////////////
+// NOTE: INPUT instructions HAVE TO BE PUT INTO THE "INPUT Modifier" Tab, OUTPUT instructions INTO THE "OUTPUT Modifier" Tab. MEMORY Instructions can be in both tabs but its better to put them
+// into the INPUT Modifier Tab only
+///////////////////////////////////////////////////////////////////////
+
+//Explanation:
+
+// > I enter the beasts castle.    --->> AI Dungeon sees the words "beast" and "castle" in your input and executes the first instruction. It now remembers "The beast´s castle is very dark"
+// > I see the rose and move to touch it. --->> AI Dungeon generates its response and adds "The beast suddenly appears behind you and roars at you loudly" to its response.
+// > I scream very loudly. -->> AI Dungeon adds "You flee out of the room", to its response.
+// > I run out of the castle and leave it behind. -->> AI Dungeon remembers "As you run away and leave the castle behind it crumbles to dust", the N in the CONTINUE-PART tells AID that there are no further 
+// instructions
+
+//Now you know how to use EasyScript. Below is the following line: "var instructions = [" "]. Write your instructions between the ". Do not change anything else. Separate the instructions with a ;
+//Do not use " anywhere inside your instructions
+
+//Example: var instructions = ["beast,castle|The beast´s castle is very dark|0|MEMORY|1;rose,touch|The beast suddenly appears behind you and roars at you loudly.|1|OUTPUT|2;"]
+
+var instructions = [" "]
+
+// DO NOT WRITE OR EDIT ANYTHING BUT BETWEEN THE " " IN THE LINE ABOVE!!!! DO NOT DELETE OR EDIT ANYTHING BELOW!!! ////////
+const modifier = (text) => {
+    let modifiedText = text
+    const lowered = text.toLowerCase()
+    if (typeof (state.nextInstruction) == "undefined") {
+        state.nextInstruction = "none"
+    }
+    tstring = ""
+    var empty_instruction_obj = {
+        "IF": tstring,
+        "TEXT": tstring,
+        "INSTR": tstring,
+        "MODE": tstring,
+        "CONTINUE": tstring
+    }
+    var instructions_array = []
+    for (instr of instructions) {
+        is = instr.split(";")
+        for (i of is) {
+            instrsplit = i.split("|")
+            console.log(instrsplit)
+            var instBlock = new Object()
+            instBlock.if = instrsplit[0].split(",")
+            instBlock.text = instrsplit[1]
+            instBlock.instr = instrsplit[2]
+            instBlock.mode = instrsplit[3]
+            instBlock.continue = instrsplit[4]
+            instructions_array.push(instBlock)
+        }
+    }
+    if (state.nextInstruction == "none") {
+        parseInstruction = instructions_array[0]
+        keycount = parseInstruction.if.length
+        count = 0
+        for (key of parseInstruction.if) {
+            if (modifiedText.includes(key) == true) {
+                count = count + 1
+            }
+        }
+        if (keycount == count) {
+            if (parseInstruction.mode == "MEMORY") {
+                if (typeof (state.memory.context) == "undefined") {
+                    state.memory.context = parseInstruction.text
+                } else {
+                    state.memory.context = state.memory.context + " " + parseInstruction.text
+                }
+                if(parseInstruction != "N"){
+                state.nextInstruction = instructions_array[parseInstruction.continue]
+                }
+                
+                else{state.nextInstruction == "none"}
+            }
+            if (parseInstruction.mode == "INPUT") {
+                if (typeof (modifiedText) == "undefined") {
+                    modifiedText = ""
+                } else {
+                    modifiedText = +" " + parseInstruction.text
+                }
+                 if(parseInstruction != "N"){
+                state.nextInstruction = instructions_array[parseInstruction.continue]
+                }
+                
+                else{state.nextInstruction == "none"}
+            }
+        }
+    }
+    if (state.nextInstruction != "none") {
+        parseInstruction = state.nextInstruction
+        keycount = parseInstruction.if.length
+        count = 0
+        for (key of parseInstruction.if) {
+            if (modifiedText.includes(key) == true) {
+                count = count + 1
+            }
+        }
+        if (keycount == count) {
+            if (parseInstruction.mode == "MEMORY") {
+                if (typeof (state.memory.context) == "undefined") {
+                    state.memory.context = parseInstruction.text
+                } else {
+                    state.memory.context = state.memory.context + " " + parseInstruction.text
+                }
+                 if(parseInstruction != "N"){
+                state.nextInstruction = instructions_array[parseInstruction.continue]
+                }
+                
+                else{state.nextInstruction == "none"}
+            }
+            if (parseInstruction.mode == "INPUT") {
+                if (typeof (modifiedText) == "undefined") {
+                    modifiedText = ""
+                } else {
+                    modifiedText = modifiedText + " " + parseInstruction.text
+                }
+               if(parseInstruction != "N"){
+                state.nextInstruction = instructions_array[parseInstruction.continue]
+                }
+                
+                else{state.nextInstruction == "none"}
+            }
+        }
+    }
+    // You must return an object with the text property defined.
+    return {
+        text: modifiedText
+    }
+}
+// Don't modify this part
+modifier(text)
+// ______END_____

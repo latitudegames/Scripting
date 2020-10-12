@@ -1,0 +1,121 @@
+///////////////////////////////////////////////////////////////////////////////
+// COPY ALL OF THIS FROM HERE UNTIL THE LINE ______END_____ into the tabs "OUTPUT Modifier" Then read the instructions below
+// BE SURE TO INCLUDE THE / which is at the start of some lines like this one.
+//////////////////////////////////////////////////////////////////////////////
+
+//Example: var instructions = ["beast,castle|The beast´s castle is very dark|0|MEMORY|1;rose,touch|The beast suddenly appears behind you and roars at you loudly.|1|OUTPUT|2;"]
+
+
+var instructions = [" "]
+
+
+// DO NOT WRITE OR EDIT ANYTHING BUT BETWEEN THE " " IN THE LINE ABOVE!!!! DO NOT DELETE OR EDIT ANYTHING BELOW!!! ////////
+const modifier = (text) => {
+    let modifiedText = text
+    const lowered = text.toLowerCase()
+    if (typeof (state.nextInstruction) == "undefined") {
+        state.nextInstruction = "none"
+    }
+    tstring = ""
+    var empty_instruction_obj = {
+        "IF": tstring,
+        "TEXT": tstring,
+        "INSTR": tstring,
+        "MODE": tstring,
+        "CONTINUE": tstring
+    }
+    var instructions_array = []
+    for (instr of instructions) {
+        is = instr.split(";")
+        for (i of is) {
+            instrsplit = i.split("|")
+            console.log(instrsplit)
+            var instBlock = new Object()
+            instBlock.if = instrsplit[0].split(",")
+            instBlock.text = instrsplit[1]
+            instBlock.instr = instrsplit[2]
+            instBlock.mode = instrsplit[3]
+            instBlock.continue = instrsplit[4]
+            instructions_array.push(instBlock)
+        }
+    }
+    if (state.nextInstruction == "none") {
+        parseInstruction = instructions_array[0]
+        keycount = parseInstruction.if.length
+        count = 0
+        for (key of parseInstruction.if) {
+            if (modifiedText.includes(key) == true) {
+                count = count + 1
+            }
+        }
+        if (keycount == count) {
+            if (parseInstruction.mode == "MEMORY") {
+                if (typeof (state.memory.context) == "undefined") {
+                    state.memory.context = parseInstruction.text
+                } else {
+                    state.memory.context = state.memory.context + " " + parseInstruction.text
+                }
+                if(parseInstruction != "N"){
+                state.nextInstruction = instructions_array[parseInstruction.continue]
+                }
+                
+                else{state.nextInstruction == "none"}
+            }
+            if (parseInstruction.mode == "OUTPUT") {
+                if (typeof (modifiedText) == "undefined") {
+                    modifiedText = ""
+                } else {
+                    modifiedText = +" " + parseInstruction.text
+                }
+                if(parseInstruction != "N"){
+                state.nextInstruction = instructions_array[parseInstruction.continue]
+                }
+                
+                else{state.nextInstruction == "none"}
+            }
+        }
+    }
+    if (state.nextInstruction != "none") {
+        parseInstruction = state.nextInstruction
+        keycount = parseInstruction.if.length
+        count = 0
+        for (key of parseInstruction.if) {
+            if (modifiedText.includes(key) == true) {
+                count = count + 1
+            }
+        }
+        if (keycount == count) {
+            if (parseInstruction.mode == "MEMORY") {
+                if (typeof (state.memory.context) == "undefined") {
+                    state.memory.context = parseInstruction.text
+                } else {
+                    state.memory.context = state.memory.context + " " + parseInstruction.text
+                }
+                 if(parseInstruction != "N"){
+                state.nextInstruction = instructions_array[parseInstruction.continue]
+                }
+                
+                else{state.nextInstruction == "none"}
+            }
+            if (parseInstruction.mode == "OUTPUT") {
+                if (typeof (modifiedText) == "undefined") {
+                    modifiedText = ""
+                } else {
+                    modifiedText = modifiedText + " " + parseInstruction.text
+                }
+                if(parseInstruction != "N"){
+                state.nextInstruction = instructions_array[parseInstruction.continue]
+                }
+                
+                else{state.nextInstruction == "none"}
+            }
+        }
+    }
+    // You must return an object with the text property defined.
+    return {
+        text: modifiedText
+    }
+}
+// Don't modify this part
+modifier(text)
+// ______END_____
