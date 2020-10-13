@@ -50,7 +50,9 @@ You can modify worldEntries with the below functions
 ## State
 The `state` variable can be used to store information that's persistent across function calls/modifiers. 
 * The `state.memory.context` value will replace the user defined memory if it exists
-* The `state.message` value will be displayed as a extra message in the game (if it exists) 
+* The `state.message`, if provided, can be a string that will be displayed as an alert in the game.
+  When in 3rd person mode, `state.message` can also be an object with a list of the multiplayer character names
+  who should see the message. E.g., `{ text: 'Only you can see this!', visibleTo: ['Sam', 'Jane']}`
 * You can set any variable on state to store and modify adventures throughout an adventure.
 
 ## Console
@@ -59,9 +61,14 @@ The `state` variable can be used to store information that's persistent across f
 ## Info
 
 `info` contains some useful values, depending on which modifier you're in.
-All modifiers have access to `info.actionCount`, the number of actions in the adventure so far.
 
-When in a Context Modifier, `info.memoryLength` and `info.maxChars` are also set, indicating the length of the memory portion of text (if any), and the total allowed length of the context after which it will be truncated.
+All modifiers have access to:
+- `info.actionCount`, the number of actions in the adventure so far.
+- `info.characters`, an array of character info, currently each object has one key of `name`. E.g., `{ name: "Sam" }`.
+
+When in a Context Modifier:Go
+- `info.memoryLength`, the length of the memory portion of text (if any).
+- `info.maxChars`, the total allowed length of the context after which it will be truncated.
 
 ## Last Model Input (LMI)
 Clicking on the brain icon in the scripting interface will open LMI, in which you can see the last context the AI was provided, the console, and the state.
