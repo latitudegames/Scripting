@@ -43,9 +43,9 @@ Called each time the model generates an output and has the opportunity to modify
 You can read from the `worldEntries` parameter (same as world info that you can set on the scenario)
 
 You can modify worldEntries with the below functions
-* addWorldEntry(keys, entry)
+* addWorldEntry(keys, entry, isNotHidden = false)
 * removeWorldEntry(index)
-* updateWorldEntry(index, keys, entry)
+* updateWorldEntry(index, keys, entry, isNotHidden = false)
 
 ## State
 The `state` variable can be used to store information that's persistent across function calls/modifiers. 
