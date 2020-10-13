@@ -51,8 +51,8 @@ You can modify worldEntries with the below functions
 The `state` variable can be used to store information that's persistent across function calls/modifiers. 
 * The `state.memory.context` value will replace the user defined memory if it exists
 * The `state.message`, if provided, can be a string that will be displayed as an alert in the game.
-  When in 3rd person mode, `state.message` can also be an object with a list of the multiplayer character names
-  who should see the message. E.g., `{ text: 'Only you can see this!', visibleTo: ['Sam', 'Jane']}`
+  When in 3rd person mode, `state.message` can also be an object (or an array of objects) with a list of the multiplayer character names
+  who should see the message. E.g., `[{ text: 'Only you can see this!', visibleTo: ['Sam', 'Jane']}]`
 * You can set any variable on state to store and modify adventures throughout an adventure.
 
 ## Console
