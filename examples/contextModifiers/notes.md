@@ -38,8 +38,8 @@ Set a note by typing `note: ` when in Do mode. It will be tagged to whatever the
 const modifier = (text) => {
   state.notes = state.notes || []
 
-  const contextMemory = text.slice(0, info.memoryLength || 0)
-  let context = info.memoryLength ? text.slice(info.memoryLength + 1) : text
+  const contextMemory = info.memoryLength ? text.slice(0, info.memoryLength) : ''
+  let context = info.memoryLength ? text.slice(info.memoryLength) : text
 
   // Assumes that the notes are sorted from oldest to newest.
   state.notes = state.notes.filter(({ pattern, note, actionCount }) => {

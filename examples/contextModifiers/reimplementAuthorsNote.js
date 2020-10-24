@@ -7,7 +7,7 @@
 // This modifier re-implements Author's Note as an example.
 const modifier = (text) => {
   const contextMemory = info.memoryLength ? text.slice(0, info.memoryLength) : ''
-  const context = info.memoryLength ? text.slice(info.memoryLength + 1) : text
+  const context = info.memoryLength ? text.slice(info.memoryLength) : text
   const lines = context.split("\n")
   if (lines.length > 2) {
     const authorsNote = "Everyone in this story is an AI programmer."
