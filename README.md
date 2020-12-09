@@ -39,10 +39,10 @@ When inside of a Context Modifier, you can return `stop: true` in order to stop 
 ### Output Modifier
 Called each time the model generates an output and has the opportunity to modify that output. 
 
-## World Entries
-You can read from the `worldEntries` parameter (same as world info that you can set on the scenario)
+## World Info
+You can read from the `worldInfo` parameter (same as world info that you can set on the scenario)
 
-You can modify worldEntries with the below functions
+You can modify worldInfo with the below functions
 * addWorldEntry(keys, entry, isNotHidden = false)
 * removeWorldEntry(index)
 * updateWorldEntry(index, keys, entry, isNotHidden = false)
