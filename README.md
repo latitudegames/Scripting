@@ -52,8 +52,9 @@ The `state` variable can be used to store information that's persistent across f
 * The `state.message`, if provided, can be a string that will be displayed as an alert in the game.
   When in 3rd person mode, `state.message` can also be an object (or an array of objects) with a list of the multiplayer character names
   who should see the message. E.g., `[{ text: 'Only you can see this!', visibleTo: ['Sam', 'Jane']}]`
-* `state.score` provides the current game score
-* `state.currentRobot` is the currently assigned scoreBot. Changing this to an available bot will request that bot to do scoring. Available bots are [`KillBot`, `JudgeBot`, `EmpathyBot`, `SuccessBot`] - expect changes to the scoring on the bots as well as the messages produced by them. If the requested bot is unavailable the user's default ScoreBot will be used. 
+* The `state.memory.context` value will replace the user defined memory if it exists
+* `state.displayStats` takes an array of objects [{key, value, color}] which will be displayed for users in the score section as [key]: [value] in the preferred color (defaults to user color)
+* `state.currentRobot` is the currently assigned scoreBot. Changing this to an available bot will request that bot to do scoring. Available bots are [`KillBot`, `JudgeBot`, `EmpathyBot`, `SuccessBot`] - expect changes to the scoring on the bots as well as the messages produced by them. If the requested bot is unavailable no score changes will be returned. 
 * You can set any variable on state to store and modify adventures throughout an adventure.
 
 ## Console
