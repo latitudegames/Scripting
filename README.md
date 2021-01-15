@@ -57,7 +57,6 @@ The `state` variable can be used to store information that's persistent across f
 * `state.inventory` takes an array of objects [{name, quantity}] which will be make the inventory option available in the adventure menu (right). For now, this just displays all items and thier quantities from the inventory.
 See https://github.com/latitudegames/Scripting/blob/master/examples/addSimpleInventory.js for an example.
 
-* `state.currentRobot` is the currently assigned scoreBot. Changing this to an available bot will request that bot to do scoring. Available bots are [`KillBot`, `JudgeBot`, `EmpathyBot`, `SuccessBot`] - expect changes to the scoring on the bots as well as the messages produced by them. If the requested bot is unavailable no score changes will be returned. 
 * You can set any variable on state to store and modify adventures throughout an adventure.
 
 ## Console
