@@ -56,6 +56,7 @@ The `state` variable can be used to store information that's persistent across f
 * `state.displayStats` takes an array of objects [{key, value, color}] which will be displayed for users in the score section as [key]: [value] in the preferred color (defaults to user color). See https://github.com/latitudegames/Scripting/blob/master/examples/showTextLength.js for an example.
 * `state.inventory` takes an array of objects [{name, quantity}] which will be make the inventory option available in the adventure menu (right). For now, this just displays all items and thier quantities from the inventory.
 See https://github.com/latitudegames/Scripting/blob/master/examples/addSimpleInventory.js for an example.
+* `state.evaluationBot` uses an evlation bot to assess latest actions and convert it to machine readable formats. The results of the `evaluationBot` are returned in `info.evaluation`. Different bots return a `reason` (description of their interpretation of the text) as well as various assessment such as `loot` or `health`. See https://github.com/latitudegames/Scripting/blob/master/examples/evaluationBots.js for usage and available bots.
 
 * You can set any variable on state to store and modify adventures throughout an adventure.
 
