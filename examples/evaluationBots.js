@@ -25,6 +25,8 @@ modifier(text)
 
 /*
   AVAILABLE BOTS
-
-  
+['KillBot', 'JudgeBot', 'EmpathyBot', 'SuccessBot', 'SantaBot'] - Score
+['GoblinBot'] - Goblins killed, health lost, loot gained
+['KittenBot'] - Rapport gained, hunger
+['SpaceLootBot'] - Loot
 */
