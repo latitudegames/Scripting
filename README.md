@@ -54,6 +54,9 @@ The `state` variable can be used to store information that's persistent across f
   who should see the message. E.g., `[{ text: 'Only you can see this!', visibleTo: ['Sam', 'Jane']}]`
 * The `state.memory.context` value will replace the user defined memory if it exists
 * `state.displayStats` takes an array of objects [{key, value, color}] which will be displayed for users in the score section as [key]: [value] in the preferred color (defaults to user color). See https://github.com/latitudegames/Scripting/blob/master/examples/showTextLength.js for an example.
+* `state.inventory` takes an array of objects [{name, quantity}] which will be make the inventory option available in the adventure menu (right). For now, this just displays all items and thier quantities from the inventory.
+See https://github.com/latitudegames/Scripting/blob/master/examples/addSimpleInventory.js for an example.
+
 * `state.currentRobot` is the currently assigned scoreBot. Changing this to an available bot will request that bot to do scoring. Available bots are [`KillBot`, `JudgeBot`, `EmpathyBot`, `SuccessBot`] - expect changes to the scoring on the bots as well as the messages produced by them. If the requested bot is unavailable no score changes will be returned. 
 * You can set any variable on state to store and modify adventures throughout an adventure.
 
