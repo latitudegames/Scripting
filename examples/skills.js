@@ -5,6 +5,7 @@ const modifier = (text) => {
     state.skills = {'turtle':1}
     state.skillPoints = 1
     state.disableRandomSkill = true
+    return ({text})
   }
   
   // Don't modify this part
