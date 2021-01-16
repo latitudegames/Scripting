@@ -29,4 +29,5 @@ modifier(text)
 ['GoblinBot'] - Goblins killed, health lost, loot gained
 ['KittenBot'] - Rapport gained, hunger
 ['SpaceLootBot'] - Loot
+['DCStatDifficultyBot'] - Stat, Difficulty
 */
