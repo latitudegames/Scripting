@@ -60,6 +60,7 @@ See https://github.com/latitudegames/Scripting/blob/master/examples/addSimpleInv
 * `state.skills` is a dictionary {...values, skill(str):level(int)}. A value in state.skills will enable the skills overlay in the adventure menu. The skills overlay allows players to allocate `skillPoints` or learn `random skills` which can be set with the following parameters:
   * `state.disableRandomSkill` disables the user from learning random skills in the screen
   * `state.skillPoints` sets the number of skill points a player has available.
+See https://github.com/latitudegames/Scripting/blob/master/examples/skills.js for examples.
 
 
 * You can set any variable on state to store and modify adventures throughout an adventure.
