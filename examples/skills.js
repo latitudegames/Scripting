@@ -3,7 +3,7 @@
 //creates skills with 5 skill points (for input modifier) 
 const modifier = (text) => {    
     state.skills = {'turtle':1}
-    state.skillPoints = 1
+    state.skillPoints = 5
     state.disableRandomSkill = true
     return ({text})
   }
