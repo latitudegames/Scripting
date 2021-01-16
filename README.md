@@ -57,6 +57,10 @@ The `state` variable can be used to store information that's persistent across f
 * `state.inventory` takes an array of objects [{name, quantity}] which will be make the inventory option available in the adventure menu (right). For now, this just displays all items and thier quantities from the inventory.
 See https://github.com/latitudegames/Scripting/blob/master/examples/addSimpleInventory.js for an example.
 * `state.evaluationBot` uses an evlation bot to assess latest actions and convert it to machine readable formats. The results of the `evaluationBot` are returned in `info.evaluation`. Different bots return a `reason` (description of their interpretation of the text) as well as various assessment such as `loot` or `health`. See https://github.com/latitudegames/Scripting/blob/master/examples/evaluationBots.js for usage and available bots.
+* `state.skills` is a dictionary {...values, skill(str):level(int)}. A value in state.skills will enable the skills overlay in the adventure menu. The skills overlay allows players to allocate `skillPoints` or learn `random skills` which can be set with the following parameters:
+  * `state.disableRandomSkill` disables the user from learning random skills in the screen
+  * `state.skillPoints` sets the number of skill points a player has available.
+
 
 * You can set any variable on state to store and modify adventures throughout an adventure.
 
