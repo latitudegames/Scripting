@@ -61,7 +61,8 @@ See https://github.com/latitudegames/Scripting/blob/master/examples/addSimpleInv
   * `state.disableRandomSkill` disables the user from learning random skills in the screen
   * `state.skillPoints` sets the number of skill points a player has available.
 See https://github.com/latitudegames/Scripting/blob/master/examples/skills.js for examples.
-
+* `state.stats` is a dictionary stats: {stats:{..., statName:{level, cost}}, statPoints}. This opens the stats overlay in adventure menu allowing players to allocate `statPoints` at `cost`.
+See https://github.com/latitudegames/Scripting/blob/master/examples/stats.js for examples.
 
 * You can set any variable on state to store and modify adventures throughout an adventure.
 
