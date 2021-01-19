@@ -31,4 +31,5 @@ modifier(text)
 ['SpaceLootBot'] -> Loot
 ['DCStatDifficultyBot'] -> Stat, Difficulty
 ['HungerBot'] -> Fullness
+['SimplePossiblityBot'] -> PossibleAction1, PossibleAction2
 */
