@@ -18,6 +18,7 @@ The following bots are best used on output.
 - `KittenBot` - Evaluates whether rapport was gained or a kitten got hungrier
 - `SpaceLootBot` - Evaluates whether loot would be found (on a spaceship)
 - `HungerBot` - Evaluates whether the player would get hungrier or not
+- `RestDetectBot` - Evaluates whether or not the user got rest
 
 ## Simple Evaluation Bots
 There are several evaluation score bots. These bots can be used on either input or output to score different text. They all return a `reason` and a `score` which is roughly along the below descriptions.

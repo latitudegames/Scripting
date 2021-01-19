@@ -20,12 +20,3 @@ return { text }
 
 // Don't modify this part
 modifier(text)
-
-
-
-/*
-  AVAILABLE BOTS
-['DCStatDifficultyBot'] - Stat, Difficulty
-['InputDCattributeBot'] - DC, Attrbute
-['SimplePossibilityBot'] - Possibility 1, Possibility 2
-*/
