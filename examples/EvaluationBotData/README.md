@@ -6,8 +6,8 @@ Bots and their usage
 - `InputDCattributeBot` - Evaluate the attribute and difficulty of an action (returns numeric difficulty)
 
 # Input Special Usage
-- `SimplePossiblityBot` - Evalutes two possible actions, PossibleAction1 and PossibleAction2.
-  - Special Usage: When `state.inputBot='SimplePossiblityBot'` you need to provide a character description in `state.contextualString`. This can be up to 75 characters (additional length will be truncated). `SimplePossiblityBot` will use the character description with the actions to provide information on what the character can do in the situation. Useful for enforcing limitations such as missing limbs or weapons.
+- `SimplePossibilityBot` - Evalutes two possible actions, PossibleAction1 and PossibleAction2.
+  - Special Usage: When `state.inputBot='SimplePossibilityBot'` you need to provide a character description in `state.contextualString`. This can be up to 75 characters (additional length will be truncated). `SimplePossiblityBot` will use the character description with the actions to provide information on what the character can do in the situation. Useful for enforcing limitations such as missing limbs or weapons.
 
 # Output
 The following bots are best used on output.
