@@ -85,3 +85,29 @@ modifier(text)
 ```
 
 Note the call to `addCommand()`, and that its parameters are the same as `Command()`; `addCommand()` just does the work of adding your command to the command array for you.
+
+# Contributing to AIDECLib
+The main GitHub Repo for AIDECLib can be found [here](https://github.com/JaonHax/aideclib). If any issues arise with AIDECLib, the best way to notify me will be by creating an issue in that repository. With that said, the version of AIDECLib found in its repository is the development version of AIDECLib, and may contain bugs. When I release a new version of AIDECLib, I will create a pull request here to update it. The other best way to access the stable version of AIDECLib will be to check the release tags in its repository, and get the source code like that.
+
+# Licensing Information
+MIT License
+
+Copyright (c) 2021 JaonHax
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
