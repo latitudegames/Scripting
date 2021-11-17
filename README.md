@@ -11,12 +11,16 @@ Then now's a great time to learn! A good resource to learn javascript from scrat
 https://www.codecademy.com/courses/introduction-to-javascript
 
 ## History
-You have access to (but can't modify) the `history` object which is a list of the previous actions of the player and of the AI, including the action type.
+You have access to (but can't modify) the `history` object which is a list of the previous actions of the player and of the AI, including the action type. Actions can be of types:
+* "do"
+* "say"
+* "story"
+* "continue" (For when the player presses enter/the send button without typing an action)
 
 ## Memory
 You have access to (but can't modify) the `memory` object which is the current user defined memory.
-You can modify the memory the game uses by settings the `state.memory.context` value. This will replace the user defined memory.
-You can also set `state.memory.frontMemory`, which will include whatever is there in front of even the last action when it's fed into the model, but still not display it to the user.
+* You can modify the memory the game uses by settings the `state.memory.context` value. This will replace the user defined memory.
+* You can also set `state.memory.frontMemory`, which will include whatever is there in front of even the last action when it's fed into the model, but still not display it to the user. **Be careful with this, as setting the frontMemory to an incomplete sentence may result in the AI attempting to complete it in its output, but the frontMemory will not actually display to the player in the adventure.**
 
 ## Author's Note
 You can set `state.memory.authorsNote` to provide a piece of text that will always be injected three lines back in the game history. This will not be shown to the user, but the AI will see it.
@@ -27,6 +31,8 @@ As an example, if you set `state.memory.authorsNote` to `the following paragraph
 
 ### Shared Library
 Prepended to the start of the other three scripts before execution so that you can share code between all three.
+
+**NOTE: To share variables throughout the adventure or across modifier scripts, you should use the [State](https://github.com/latitudegames/Scripting#state) variable. This will not share variable values between modifiers.**
 
 ### Input Modifier
 Called each time the player gives an input and has the opportunity to modify that input. When inside of an Input Modifier,
@@ -53,17 +59,9 @@ The `state` variable can be used to store information that's persistent across f
   When in 3rd person mode, `state.message` can also be an object (or an array of objects) with a list of the multiplayer character names
   who should see the message. E.g., `[{ text: 'Only you can see this!', visibleTo: ['Sam', 'Jane']}]`
 * The `state.memory.context` value will replace the user defined memory if it exists
-* `state.displayStats` takes an array of objects [{key, value, color}] which will be displayed for users in the score section as [key]: [value] in the preferred color (defaults to user color). See https://github.com/latitudegames/Scripting/blob/master/examples/showTextLength.js for an example.
-* `state.inventory` takes an array of objects [{name, quantity}] which will be make the inventory option available in the adventure menu (right). For now, this just displays all items and thier quantities from the inventory.
-See https://github.com/latitudegames/Scripting/blob/master/examples/addSimpleInventory.js for an example.
-* `state.skills` is a dictionary {...values, skill(str):level(int)}. A value in state.skills will enable the skills overlay in the adventure menu. The skills overlay allows players to allocate `skillPoints` or learn `random skills` which can be set with the following parameters:
-  * `state.disableRandomSkill` disables the user from learning random skills in the screen
-  * `state.skillPoints` sets the number of skill points a player has available.
-See https://github.com/latitudegames/Scripting/blob/master/examples/skills.js for examples.
-* `state.stats` is a dictionary stats: {stats:{..., statName:{level, cost}}, statPoints}. This opens the stats overlay in adventure menu allowing players to allocate `statPoints` at `cost`.
-See https://github.com/latitudegames/Scripting/blob/master/examples/stats.js for examples.
+* `state.displayStats`, `state.skills`, `state.disableRandomSkill`, `state.skillPoints`, `state.inventory` and `state.stats` were all used in an experimental scripted scenario for Premium users, but have since been deprecated and no longer work. You may find them in example scripts on the repo, but they likely will not work any more.
 
-* You can set any variable on state to store and modify adventures throughout an adventure.
+* You can set any variable on state to store and modify adventures throughout an adventure. This includes variables other than the ones mentioned above - they will persist throughout the adventure and be freely read and written from/to in the input, output and context modifiers.
 
 ## Console
 `console.log("Some message")` will log messages that you can see in the scripting console
@@ -81,4 +79,4 @@ When in a Context Modifier:Go
 - `info.maxChars`, the total allowed length of the context after which it will be truncated.
 
 ## Last Model Input (LMI)
-Clicking on the brain icon in the scripting interface will open LMI, in which you can see the last context the AI was provided, the console, and the state.
+Clicking on the brain icon in the scripting interface will open LMI, in which you can see the last context the AI was provided, the console logs for each modifier's script, and the state.
