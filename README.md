@@ -46,12 +46,16 @@ When inside of a Context Modifier, you can return `stop: true` in order to stop 
 Called each time the model generates an output and has the opportunity to modify that output. 
 
 ## World Info
-You can read from the `worldInfo` parameter (same as world info that you can set on the scenario)
+You can read from the `worldInfo` parameter and modify the World Info of an adventure using the following functions - these are not methods of worldInfo, however:
 
-You can modify worldInfo with the below functions
+You can modify worldInfo with the below functions (not methods of worldInfo):
 * addWorldEntry(keys, entry, isNotHidden = false)
-* removeWorldEntry(index)
+* removeWorldEntry(index) - **Note: At the time of writing, this is known to be bugged and likely will not work. This note will be removed when this is no longer the case.**
 * updateWorldEntry(index, keys, entry, isNotHidden = false)
+
+Things to note:
+* `isNotHidden` is a now-removed feature that would hide world info from players of an adventure when set to false. At the time of writing, use of this is still required for these functions but it does not do anything.
+* `index` in the above functions refers to the position of a world info entry in the `worldInfo` object, which is an array of objects representing your world info.
 
 ## State
 The `state` variable can be used to store information that's persistent across function calls/modifiers. 
@@ -72,11 +76,11 @@ The `state` variable can be used to store information that's persistent across f
 
 All modifiers have access to:
 - `info.actionCount`, the number of actions in the adventure so far.
-- `info.characters`, an array of character info, currently each object has one key of `name`. E.g., `{ name: "Sam" }`.
+- `info.characters`, an array of Multiplayer character info stored as objects - players who enter a third-person Multiplayer adventure and set a name for their characters will have their character name appear here. Currently each object just has one key of `name`, formatted like so: `{ name: "Sam" }`.
 
-When in a Context Modifier:Go
+When in a Context Modifier:
 - `info.memoryLength`, the length of the memory portion of text (if any).
 - `info.maxChars`, the total allowed length of the context after which it will be truncated.
 
-## Last Model Input (LMI)
-Clicking on the brain icon in the scripting interface will open LMI, in which you can see the last context the AI was provided, the console logs for each modifier's script, and the state.
+## Last Model Input (LMI)/Script Logs & Errors
+Clicking on the brain icon in the scripting interface will open a modal with two tabs. In Last Model Input, you can see the last context the AI was provided from an adventure derived from the scenario you're working on. In Script Logs & Errors, you can see the console logs for each modifier's script, and the state. Each log will have a header clarifying which modifier it came from and what time it ran and generated. The LMI and logs here will expire after a few minutes, so it's recommended to keep a second window/tab open with this screen up while you playtest your scripted scenarios.
