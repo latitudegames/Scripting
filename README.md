@@ -51,12 +51,12 @@ Called each time the model generates an output and has the opportunity to modify
 You can read from the `worldInfo` parameter and modify the World Info of an adventure using the following functions - these are not methods of worldInfo, however:
 
 You can modify worldInfo with the below functions (not methods of worldInfo):
-* addWorldEntry(keys, entry, isNotHidden = false)
+* addWorldEntry(keys, entry)
 * removeWorldEntry(index) - **Note: At the time of writing, this is known to be bugged and likely will not work. This note will be removed when this is no longer the case.**
-* updateWorldEntry(index, keys, entry, isNotHidden = false)
+* updateWorldEntry(index, keys, entry)
 
 Things to note:
-* `isNotHidden` is a now-removed feature that would hide world info from players of an adventure when set to false. At the time of writing, use of this is still required for these functions but it does not do anything.
+* `isNotHidden` is a now-removed feature that would hide world info from players of an adventure when set to false. You may notice an extra argument in old world info management scripts that use addWorldEntry and updateWorldEntry - this is why. It won't break the script, but it no longer does anything.
 * `index` in the above functions refers to the position of a world info entry in the `worldInfo` object, which is an array of objects representing your world info.
 
 ## State
