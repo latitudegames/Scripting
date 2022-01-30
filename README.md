@@ -38,8 +38,10 @@ Prepended to the start of the other three scripts before execution so that you c
 Called each time the player gives an input and has the opportunity to modify that input. When inside of an Input Modifier,
 you can return `stop: true` in order to stop processing——see [examples/commandParser.js](examples/commandParser.js). Setting `stop: true` is important to make sure that you only spend energy for users when you need to.
 
+**Note: The stop flag is currently bugged and will also prevent player's actions from showing up in the adventure, regardless of whether or not you modify their input. This note will be removed when this is no longer the case.**
+
 ### Context Modifier
-Called each time the AI model is about to receive input and has the opportunity to modify that input (by up to a 75% [edit distance](https://en.wikipedia.org/wiki/Levenshtein_distance) change).
+Called each time the AI model is about to receive input and can modify what the model receives without affecting how the story itself looks. Originally, this was capped at a 75% [edit distance](https://en.wikipedia.org/wiki/Levenshtein_distance) due to OpenAI policy, but this is no longer the case as OpenAI models are no longer used in AI Dungeon.
 When inside of a Context Modifier, you can return `stop: true` in order to stop processing.
 
 ### Output Modifier
