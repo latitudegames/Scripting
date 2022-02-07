@@ -48,16 +48,17 @@ When inside of a Context Modifier, you can return `stop: true` in order to stop 
 Called each time the model generates an output and has the opportunity to modify that output. 
 
 ## World Info
-You can read from the `worldInfo` parameter and modify the World Info of an adventure using the following functions - these are not methods of worldInfo, however:
+You can read from the `worldInfo` parameter (an array of objects representing single world info entries) and modify the World Info of an adventure using the following functions - these are not methods of worldInfo, however:
 
 You can modify worldInfo with the below functions (not methods of worldInfo):
-* addWorldEntry(keys, entry)
+* addWorldEntry(keys, entry) - This function will return the index at which the new world info entry is added to the `worldInfo` array. For instance, adding world info to an adventure with one existing world info will cause this function to return `1`, as this is the index of the newly added world info in the array. Remember, arrays are 0-based, so entry number one would be at index 0.
 * removeWorldEntry(index) - **Note: At the time of writing, this is known to be bugged and likely will not work. This note will be removed when this is no longer the case.**
 * updateWorldEntry(index, keys, entry)
 
 Things to note:
 * `isNotHidden` is a now-removed feature that would hide world info from players of an adventure when set to false. You may notice an extra argument in old world info management scripts that use addWorldEntry and updateWorldEntry - this is why. It won't break the script, but it no longer does anything.
 * `index` in the above functions refers to the position of a world info entry in the `worldInfo` object, which is an array of objects representing your world info.
+* As of a recent update, updateWorldEntry will no longer attempt to add a new world info entry if a script attempt to update a nonexistent entry. Scripts that relied on this behaviour will no longer work, and instead will return an error like `World info not found at index xyz in updateWorldEntry`.
 
 ## State
 The `state` variable can be used to store information that's persistent across function calls/modifiers. 
