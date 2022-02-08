@@ -52,7 +52,7 @@ You can read from the `worldInfo` parameter (an array of objects representing si
 
 You can modify worldInfo with the below functions (not methods of worldInfo):
 * addWorldEntry(keys, entry) - This function will return the index at which the new world info entry is added to the `worldInfo` array. For instance, adding world info to an adventure with one existing world info will cause this function to return `1`, as this is the index of the newly added world info in the array. Remember, arrays are 0-based, so entry number one would be at index 0.
-* removeWorldEntry(index) - **Note: At the time of writing, this is known to be bugged and likely will not work. This note will be removed when this is no longer the case.**
+* removeWorldEntry(index)
 * updateWorldEntry(index, keys, entry)
 
 Things to note:
