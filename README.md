@@ -1,7 +1,7 @@
 # Announcement
 Scripting has gotten a full revamp with the Phoenix release. 
 
-Documentation for Scripting has moved to the [AI Dungeon Guidebook](https://help.aidungeon.io/scripting).
+Documentation for Scripting has moved to the [AI Dungeon Guidebook](https://help.aidungeon.io/scripting), and this repo is now archived.
 
 You can try out the new and improved Scripting Editory at [play.aidungeon.com](https://play.aidungeon.com).
 
