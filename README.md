@@ -1,3 +1,11 @@
+# Announcement
+Scripting has gotten a full revamp with the Phoenix release. 
+
+Documentation for Scripting has moved to the [AI Dungeon Guidebook](https://help.aidungeon.io/scripting).
+
+You can try out the new and improved Scripting Editory at [play.aidungeon.com](https://play.aidungeon.com).
+
+
 # Scripting
 
 Custom scripts on AI Dungeon scenarios allow you to modify the memory, input, and output as well as keep track of custom state objects that might be relevant for your adventure. You can write custom scripts in Javascript by going to the "Scripts" section while on web on the edit scenario page. For security reasons some Javascript functionality is locked down however. Submit a request if there is functionality you would like opened up and we can look into it.
