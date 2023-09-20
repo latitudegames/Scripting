@@ -13,4 +13,4 @@ Also, note that we do not currently accept NSFW scripts.
 
 The following are links to more AID scripts located externally.
 
-* More soon! Please send PRs.
+-   More soon! Please send PRs.
